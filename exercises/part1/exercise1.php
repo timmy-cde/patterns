@@ -2,82 +2,50 @@
 
 <div class="container">
     <h2>Exercise 1: Create the given pattern (diamond)</h2>
+    <table class="table table-borderless w-25">
+        <tbody>
+            <?php
+            $left = 3;
+            $right = 3;
+            for ($row = 0; $row < 7; $row++) {
+                if ($row < 3) {
+                    $left = 3 - $row;
+                    $right = 3 + $row;
+                }
+                if ($row == 3) {
+                    $left = 0;
+                    $right = 6;
+                }
+                if ($row > 3) {
+                    $left = $row - 3;
+                    $right = $right - 1;
+                }
 
-    <?php
-    for ($row = 0; $row < 7; $row++) {
-        for ($col = 0; $col < 3; $col++) {
-            if ($col < 3) {
-                echo 'X';
-            } else {
-                echo 'Z';
+                echo '<tr>';
+                for ($col = 0; $col < 7; $col++) {
+                    if ($col == 3) {
+                        echo ("<td>|</td>");
+                        // if ($row == 0 || $row == 6) {
+                        //     // echo ("<span class='m-4'>&nbsp|</span>");
+                        // } else {
+                        //     // echo ("<span class='m-4'>|</span>");
+                        // }
+                    } else {
+                        if ($col == $left || $col == $right) {
+                            // echo ("<span class='m-4'>*</span>");
+                            echo ("<td>*</td>");
+                        } else {
+                            // echo ("<span class='m-4'></span>");
+                            echo ("<td></td>");
+                        }
+                    }
+                }
+                echo '</tr>';
             }
-        }
-        echo '|';
-        for ($col = 0; $col < 3; $col++) {
-            echo 'Y';
-        }
-        echo '<br>';
-    }
+            ?>
 
-    echo '<br>';
-
-    // for ($row = 1; $row <= 6; $row++) {
-    //     // echo $row . ' ';
-    //     echo "$row";
-
-    //     $multiply = $row;
-    //     for ($col = 1; $col <= 4; $col++) {
-    //         $multiply *= $row + 1;
-    //         // echo $multiply . ' ';
-    //         echo "$multiply  ";
-    //     }
-    //     echo '<br>';
-    // }
-
-    // for ($i = 0; $i < 7; $i++) {
-    //     for ($j = 0; $j < 3; $j++) {
-    //         if ($j < $i && $i < 4) {
-    //             echo "X ";
-    //         } else if ($j >= 2 - $i && $i >= 4) {
-    //             echo "X ";
-    //         } else {
-    //             echo "* ";
-    //         }
-    //     }
-    //     echo "| ";
-    //     for ($j = 0; $j < 3; $j++) {
-    //         if ($j >= 2 - $i && $i < 4) {
-    //             echo "X ";
-    //         } else if ($j < $i && $i >= 4) {
-    //             echo "X ";
-    //         } else {
-    //             echo "* ";
-    //         }
-    //     }
-    //     echo "<br>";
-    // }
-
-    // $m = 1;
-    // for ($row = 1; $row <= 5; $row++) {
-    //     for ($column = $row; $column <= 4; $column++) {
-    //         echo $column;
-    //         echo "&nbsp;&nbsp;";
-    //     }
-    //     for ($k = 1; $k <= $m; $k++) {
-    //         // echo $k;
-    //         echo "* ";
-    //     }
-    //     for ($c = $m; $c > 1; $c--) {
-    //         // echo $c;
-    //         echo "* ";
-    //     }
-    //     echo "<br>";
-    //     $m++;
-    // }
-
-    ?>
+        </tbody>
+    </table>
 </div>
-
-
 
 <?php include '../../components/footer.php' ?>

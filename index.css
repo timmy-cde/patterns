@@ -6,12 +6,6 @@ li.text:hover {
     background-color: rgb(209, 205, 205);
 }
 
-/* input[type="text"] {
-    border-radius: 5px;
-    border: 1px solid #333;
-    padding: 5px 10px;
-} */
-
 @media screen and (max-width: 425px) {
     .w-result {
         width: 75%;

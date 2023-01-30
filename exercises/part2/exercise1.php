@@ -1,6 +1,6 @@
 <?php include '../../components/header.php' ?>
 
-<div class="width mx-auto">
+<div class="container mt-3 width mx-auto">
     <h2>Exercise 1: Generate a random character from a-k</h2>
     <ul>
         <li>Create a 4 x 5 table</li>

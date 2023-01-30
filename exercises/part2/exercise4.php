@@ -1,11 +1,11 @@
 <?php include '../../components/header.php' ?>
 
 <div class="container mt-3 width mx-auto">
-    <h2>Exercise 3: Create a stack of integers using arrays (First In Last Out)</h2>
+    <h2>Exercise 4: Create a queue of integers using arrays (First In First Out)</h2>
     <ul>
         <li>Create input fields and push a button to insert a new value</li>
-        <li>Create a pop button to remove the top value</li>
-        <li>Always display the existing stack content</li>
+        <li>Create a pop button to remove the old value</li>
+        <li>Always display the existing queue content</li>
         <li>Do not use pre-defined PHP array functions like <strong>array_pop</strong></li>
     </ul>
 </div>
@@ -19,36 +19,36 @@ if (isset($_POST['push'])) {
     } else {
         $data = $_POST['value'];
         $updated_data;
-        if (isset($_COOKIE["store"])) {
-            $updated_data = $_COOKIE["store"] . ',' . $data;
+        if (isset($_COOKIE["store_queue"])) {
+            $updated_data = $_COOKIE["store_queue"] . ',' . $data;
         } else {
             $updated_data = $data;
         }
 
-        setcookie("store", $updated_data, time() + (86400 * 30), "/");
+        setcookie("store_queue", $updated_data, time() + (86400 * 30), "/");
         header("Location: {$_SERVER['PHP_SELF']}");
     }
 };
 
-if (isset($_COOKIE["store"])) {
-    $str_data = $_COOKIE["store"];
+if (isset($_COOKIE["store_queue"])) {
+    $str_data = $_COOKIE["store_queue"];
     $stack = explode(",", $str_data);
 }
 
 if (isset($_POST['pop'])) {
-    if (isset($_COOKIE["store"])) {
+    if (isset($_COOKIE["store_queue"])) {
         $stack_spliced = [];
-        $str_data = $_COOKIE["store"];
-        $stack = explode(",", $str_data);
+        $str_data = $_COOKIE["store_queue"];
+        $stack_splice = explode(",", $str_data);
 
         $length = count($stack);
-        for ($index = 0; $index < $length - 1; $index++) {
+        for ($index = 1; $index < $length; $index++) {
             $stack_spliced[] = $stack[$index];
         }
         $stack = $stack_spliced;
 
         $updated_data = implode(",", $stack);
-        setcookie("store", $updated_data, time() + (86400 * 30), "/");
+        setcookie("store_queue", $updated_data, time() + (86400 * 30), "/");
         header("Location: {$_SERVER['PHP_SELF']}");
     }
 };
@@ -66,13 +66,15 @@ if (isset($_POST['pop'])) {
     <table class="table table-borderless width mx-auto my-5">
         <tbody>
             <?php
-            for ($pos = count($stack) - 1; $pos >= 0; $pos--) {
+            echo '<tr>';
+            for ($pos = 0; $pos < count($stack); $pos++) {
                 if (empty($stack)) {
                     echo '';
                 } else {
-                    echo '<tr><td class="border border-primary text-center">' . $stack[$pos] . '</td></tr>';
+                    echo '<td class="border border-primary text-center">' . $stack[$pos] . '</td>';
                 }
             }
+            echo '</tr>';
             ?>
         </tbody>
     </table>

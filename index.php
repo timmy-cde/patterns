@@ -1,10 +1,10 @@
 <?php include 'components/header.php' ?>
 
-<?php 
-    $text_class = "text-decoration-none text-dark";
+<?php
+$text_class = "text-decoration-none text-dark";
 ?>
 
-<main class="container-fluid">
+<main class="container">
     <h1 class="text-center">Timothy Manuel</h1>
     <h3 class="text-center">Table of Contents</h3>
     <div class="width mx-auto">
@@ -27,7 +27,7 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li class="text"><a href="exercises/part2/exercise1.php" class="<?php echo $text_class; ?>">Exercise 1: Generate a random character from a -k</a></li>
+                    <li class="text"><a href="exercises/part2/exercise1.php" class="<?php echo $text_class; ?>">Exercise 1: Generate a random character from a-k</a></li>
                     <li class="text"><a href="exercises/part2/exercise2.php" class="<?php echo $text_class; ?>">Exercise 2: Manipulation of multidimensional array</a></li>
                     <li class="text"><a href="exercises/part2/exercise3.php" class="<?php echo $text_class; ?>">Exercise 3: Create a stack of integers using arrays (First In Last Out)</a></li>
                     <li class="text"><a href="exercises/part2/exercise4.php" class="<?php echo $text_class; ?>">Exercise 4: Create a queue of integers using arrays (First In First Out)</a></li>
