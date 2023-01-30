@@ -10,56 +10,50 @@
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-6">
-            <p class="h6 text-center">(odd/even column)</p>
-            <table class="table table-bordered w-25 mx-auto">
-                <tbody>
-                    <?php
-                    $chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
-                    // echo 'char: ' . $chars[0];
-                    // print_r($chars);
-                    // print_r(array_keys($chars));
+    <div>
+        <p class="h6 text-center">(odd/even column)</p>
+        <table class="table table-bordered w-50 text-center mx-auto">
+            <tbody>
+                <?php
+                $chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
+                echo '<tr>';
+                for ($i = 0; $i < count($chars); $i++) {
+                    echo "<td>$chars[$i]</td>";
+                }
+                echo '</tr>';
 
+                echo '<tr>';
+                for ($i = 0; $i < count($chars); $i++) {
+                    echo "<td>$i</td>";
+                }
+                echo '</tr>';
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <p class="h6 text-center">Result</p>
+        <table class="table table-bordered w-result mx-auto text-center">
+            <tbody>
+                <?php
+                for ($i = 0; $i < 4; $i++) {
                     echo '<tr>';
-                    for ($i = 0; $i < count($chars); $i++) {
-                        echo "<td>$chars[$i]</td>";
-                    }
-                    echo '</tr>';
-
-                    echo '<tr>';
-                    for ($i = 0; $i < count($chars); $i++) {
-                        echo "<td>$i</td>";
-                    }
-                    echo '</tr>';
-                    ?>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="col-6">
-            <p class="h6 text-center">Result</p>
-            <table class="table table-bordered w-50 mx-auto">
-                <tbody>
-                    <?php
-                    for ($i = 0; $i < 4; $i++) {
-                        echo '<tr>';
-                        for ($j = 0; $j < 5; $j++) {
-                            $char = chr(rand(97, 107));
-                            $index = array_search($char, $chars);
-                            if ($index % 2 == 0) {
-                                $char_upper = strtoupper($char);
-                                echo "<td class='bg-info-subtle'>$char_upper</td>";
-                            } else {
-                                echo "<td>$char</td>";
-                            }
+                    for ($j = 0; $j < 5; $j++) {
+                        $char = chr(rand(97, 107));
+                        $index = array_search($char, $chars);
+                        if ($index % 2 == 0) {
+                            $char_upper = strtoupper($char);
+                            echo "<td class='bg-info-subtle'>$char_upper</td>";
+                        } else {
+                            echo "<td>$char</td>";
                         }
-                        echo '</tr>';
                     }
-                    ?>
-                </tbody>
-            </table>
-        </div>
+                    echo '</tr>';
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
 </div>
 
