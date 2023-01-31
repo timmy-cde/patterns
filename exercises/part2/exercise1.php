@@ -12,7 +12,7 @@
 <div class="container">
     <div>
         <p class="h6 text-center">(odd/even column)</p>
-        <table class="table table-bordered w-50 text-center mx-auto">
+        <table class="table table-bordered w-50 text-center mx-auto border-primary">
             <tbody>
                 <?php
                 $chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
@@ -34,7 +34,7 @@
 
     <div>
         <p class="h6 text-center">Result</p>
-        <table class="table table-bordered w-result mx-auto text-center">
+        <table class="table table-bordered w-result mx-auto text-center border-primary">
             <tbody>
                 <?php
                 for ($i = 0; $i < 4; $i++) {

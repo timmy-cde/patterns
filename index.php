@@ -5,8 +5,8 @@ $text_class = "text-decoration-none text-dark";
 ?>
 
 <main class="container">
-    <h1 class="text-center">Timothy Manuel</h1>
-    <h3 class="text-center">Table of Contents</h3>
+    <h1 class="text-center mt-3">Timothy Manuel</h1>
+    <h3 class="text-center pt-2">Table of Contents</h3>
     <div class="width mx-auto">
         <div class="card">
             <div class="card-header">

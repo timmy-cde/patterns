@@ -17,16 +17,25 @@ if (isset($_POST['push'])) {
     if (empty($_POST['value'])) {
         null;
     } else {
-        $data = $_POST['value'];
         $updated_data;
-        if (isset($_COOKIE["store"])) {
-            $updated_data = $_COOKIE["store"] . ',' . $data;
+        $data_err;
+        $data = filter_input(INPUT_POST, 'value', FILTER_SANITIZE_NUMBER_INT);
+
+        if ($data != '') {
+            $data = $_POST['value'];
         } else {
-            $updated_data = $data;
+            $data_err = 'Invalid input, not an integer';
         }
 
-        setcookie("store", $updated_data, time() + (86400 * 30), "/");
-        header("Location: {$_SERVER['PHP_SELF']}");
+        if (empty($data_err)) {
+            if (isset($_COOKIE["store"])) {
+                $updated_data = $_COOKIE["store"] . ',' . $data;
+            } else {
+                $updated_data = $data;
+            }
+            setcookie("store", $updated_data, time() + (86400 * 30), "/");
+            header("Location: {$_SERVER['PHP_SELF']}");
+        }
     }
 };
 
@@ -55,10 +64,13 @@ if (isset($_POST['pop'])) {
 ?>
 
 <div class="w-25 mx-auto">
-    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
         <div class="form-group pb-3">
-            <label for="value">Input an Integer:</label>
-            <input type="text" class="form-control border-dark" name="value" id="value">
+            <label for="value" class="h6">Input an Integer:</label>
+            <input type="text" class="form-control border-dark <?php echo $data_err ? 'is-invalid' : null; ?>" name="value" id="value">
+            <div id="validationServerFeedback" class="invalid-feedback">
+                <?php echo $data_err; ?>
+            </div>
         </div>
         <input type="submit" class="btn btn-primary" name="push" value="Push">
         <input type="submit" class="btn btn-danger" name="pop" value="Pop">
